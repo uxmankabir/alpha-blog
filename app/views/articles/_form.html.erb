@@ -1,29 +1,33 @@
 <% if @article.errors.any? %>
-  
-  <h2>The following errors prevented the article from getting created</h2>
-  
-  <ul>
-    <% @article.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+  <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+    <ul class="m-0">
+      <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+
+<div class="card border-light">
+  <div class="card-body">
+    <%= form_for @article do |f| %>
+      <div class="form-group">
+        <%= f.label :title, id: "title"%>
+        <%= f.text_field :title, class: "form-control", id: "title"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :description, id: "description"%>
+        <%= f.text_area :description, rows:6, class: "form-control", id: "description"%>
+      </div>
+      
+      <div class="d-flex justify-content-between align-items-center">
+        <%= link_to "Back to all Articles", articles_path %>
+        <%= f.submit class: "btn btn-primary"%>
+      </div>
+
     <% end %>
-  </ul>
-
-<% end %>
-
-<%= form_for @article do |f| %>
-  
-  <p> 
-    <%= f.label :title%>
-    <br>
-    <%= f.text_field :title%>
-  </p>
-  <p> 
-    <%= f.label :description%>
-    <br>
-    <%= f.text_area :description%>
-  </p>
-  <%= f.submit%>
-  
-<% end %>
-
-<p><%= link_to "Back to articles listing", articles_path %></p>
+  </div>
+</div>
