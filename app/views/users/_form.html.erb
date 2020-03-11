@@ -1,0 +1,37 @@
+<% if @user.errors.any? %>
+  <div class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+    <ul class="m-0">
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<% end %>
+
+<div class="card border-light">
+  <div class="card-body">
+    <%= form_for @user do |f| %>
+      <div class="form-group">
+        <%= f.label :username, id: "username"%>
+        <%= f.text_field :username, class: "form-control", id: "username"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :email, id: "email"%>
+        <%= f.email_field :email, class: "form-control", id: "email"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, id: "password"%>
+        <%= f.password_field :password, class: "form-control", id: "password"%>
+      </div>
+      
+      <div class="d-flex justify-content-between align-items-center">
+        <%= link_to "Back to all Articles", articles_path %>
+        <%= f.submit(@user.new_record? ? "Sign up" : "Update account", class: 'btn btn-primary') %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

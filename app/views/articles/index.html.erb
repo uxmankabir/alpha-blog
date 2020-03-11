@@ -1,18 +1,6 @@
 <h1 class="my-3">All Articles</h1>
-<div class="card-columns">
-  <% @articles.each do |article| %>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><%= article.title %></h5>
-        <p class="card-text"><%= truncate(article.description, length: 100) %></p>
-      </div>
-      <div class="card-footer bg-transparent border-light">
-        <div class="btn-group d-flex" role="group" aria-label="Actions on Article">
-          <%= link_to 'Show', article_path(article), class: "btn btn-primary btn-sm" %>
-          <%= link_to 'Edit', edit_article_path(article), class: "btn btn-secondary btn-sm" %>
-          <%= link_to 'Delete', article_path(article), class: "btn btn-danger btn-sm", method: :delete, data: {confirm: "Are you sure?"} %>
-        </div>
-      </div>
-    </div>
-  <% end %>
+<%= render 'article', articles_object: @articles %>
+
+<div>
+  <%= will_paginate %>
 </div>

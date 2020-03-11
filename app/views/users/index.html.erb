@@ -1,0 +1,14 @@
+<h1 class="my-4">All Alpha Bloggers</h1>
+
+<ul class="list-unstyled">
+  <% @users.each do |user| %>
+    <li class="media">
+      <%= link_to gravatar_for(user), user_path(user) %>
+      <div class="media-body ml-3">
+        <h5 class="mt-0 mb-1"><%= link_to user.username, user_path(user) %></h5>
+        <small>This blogger created <%= pluralize(user.articles.count, "article") if user.articles %></small>
+      </div>
+    </li>
+    <hr>
+  <% end %>
+</ul>

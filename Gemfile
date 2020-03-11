@@ -5,7 +5,11 @@ ruby '2.7.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
-
+# Use to secure the password
+gem 'bcrypt', '~> 3.1.7'
+# Use to add pagination
+gem 'will_paginate', '~> 3.1.0'
+gem 'bootstrap-will_paginate'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
@@ -44,8 +48,6 @@ group :development do
 end
 
 group :test do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '~> 1.4'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'

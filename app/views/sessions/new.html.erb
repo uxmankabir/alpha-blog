@@ -1,0 +1,20 @@
+<div class="card border-light">
+  <div class="card-body">
+    <%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |f| %>
+      <div class="form-group">
+        <%= f.label :email, id: "email"%>
+        <%= f.email_field :email, class: "form-control", id: "email"%>
+      </div>
+      <div class="form-group">
+        <%= f.label :password, id: "password"%>
+        <%= f.password_field :password, class: "form-control", id: "password"%>
+      </div>
+      
+      <div class="d-flex justify-content-between align-items-center">
+        <%= link_to "Back to all Articles", articles_path %>
+        <%= f.submit "Login", class: 'btn btn-primary' %>
+      </div>
+
+    <% end %>
+  </div>
+</div>

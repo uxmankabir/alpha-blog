@@ -1,0 +1,6 @@
+<h1 class="text-center my-4">Welcome to <%= @user.username %>'s page</h1>
+<div class="d-flex justify-content-center">
+  <%= gravatar_for @user, size: 150 %>
+</div>
+<h4 class="my-4"><%= @user.username %>'s articles</h4>
+<%= render 'articles/article', articles_object: @user.articles %>
